@@ -13,6 +13,7 @@ namespace RPG.Character
         private Animator playerAnim;
         private SpriteRenderer playerSprite;
 
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
