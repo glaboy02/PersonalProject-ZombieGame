@@ -5,6 +5,8 @@ namespace RPG.Character
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private int maxHealth = 100;
+        [SerializeField] private int damageAmount = 20;
         public GameObject[] bullets;
         private float speed = 5f;
         private bool isDead = false;
