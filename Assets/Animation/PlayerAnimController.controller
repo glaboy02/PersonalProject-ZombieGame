@@ -59,7 +59,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Movement
+  m_Name: PlayerAnimation
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5061299665143313591}
@@ -87,7 +87,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimatorController
+  m_Name: PlayerAnimController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Dead
@@ -104,7 +104,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Movement
+    m_Name: PlayerAnimation
     m_StateMachine: {fileID: -4864010992197474616}
     m_Mask: {fileID: 0}
     m_Motions: []
