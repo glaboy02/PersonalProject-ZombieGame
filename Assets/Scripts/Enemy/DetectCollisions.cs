@@ -13,13 +13,13 @@ public class DetectCollisions : MonoBehaviour
     {
 
     }
-    private void OnCollisionEnter(Collision other) {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
-    }
+    // private void OnCollisionEnter(Collision other) {
+    //     Destroy(gameObject);
+    //     Destroy(other.gameObject);
+    // }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Destroy(gameObject);
+    //     Destroy(other.gameObject);
+    // }
 }

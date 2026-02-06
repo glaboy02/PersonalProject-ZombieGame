@@ -6,8 +6,7 @@ namespace RPG.Character
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private int maxHealth = 100;
-        [SerializeField] private int damageAmount = 20;
+        public int playerHealth = 100;
         public GameObject[] bullets;
         private float speed = 5f;
         private bool isDead = false;
@@ -17,6 +16,8 @@ namespace RPG.Character
         private SpriteRenderer playerSprite;
         private float upperBound = 6f;
 
+        private float timeDelay;
+        private float timeBetweenShots = 0.2f;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -40,8 +41,9 @@ namespace RPG.Character
             {
                 playerAnim.SetBool("isRunning", false);
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && Time.time > timeDelay)
             {
+                timeDelay = Time.time + timeBetweenShots;
                 FiringBullets();
             }
 
@@ -50,7 +52,6 @@ namespace RPG.Character
                 transform.position = new Vector3(transform.position.x, upperBound, transform.position.z);
             }
 
-            
         }
 
         public void MovePlayer(Vector3 directionHorizontal, Vector3 directionVertical, float inputHorizontal, float inputVertical)
@@ -69,7 +70,6 @@ namespace RPG.Character
             transform.Translate(directionHorizontal * inputHorizontal * speed * Time.deltaTime);
             transform.Translate(directionVertical * inputVertical * speed * Time.deltaTime);
         }
-
 
         public void PlayerDead()
         {

@@ -1,46 +1,59 @@
-
-
 using UnityEngine;
 
 namespace RPG.Enemy
 {
     public class EnemyController : MonoBehaviour
     {
-        public GameObject[] enemyPrefabs;
-
-        private float spawnDelay = 2.0f;
-        private float spawnInterval = 1.0f;
+        public int enemyHealth = 100;
+        public int enemyDamage = 20;
+        private bool isDead = false;
         private float lowerBound = -8f;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            // InvokeRepeating("SpawnEnemy", spawnDelay, spawnInterval);
+            
         }
 
         // Update is called once per frame
         void Update()
         {
+
             if (transform.position.y < lowerBound)
             {
                 Destroy(gameObject);
             }
+
         }
 
-        public void SpawnEnemy()
+        public void TakeDamage(int damage)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-10, 10), 8, 0);
-            int randomEnmyIndex = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs[randomEnmyIndex], spawnPosition, transform.rotation);
+            if (isDead) return;
+            
+            enemyHealth -= damage;
+
+            if (enemyHealth <= 0)
+            {
+                EnemyDead();
+            }
         }
-        // private void OnCollisionEnter(Collision other)
-        // {
-        //     Debug.Log("Collision detected with " + other.gameObject.name);
-        //     if (other.gameObject.CompareTag("Bullet"))
-        //     {
-        //         Debug.Log("Enemy hit by bullet");
-        //         TakeDamage(enemyHealth.damageAmount);
-        //         Destroy(other.gameObject);
-        //     }
-        // }
+
+        public void EnemyDead()
+        {
+            isDead = true;
+            // Debug.Log("Enemy is dead");
+            Destroy(gameObject);
+        }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            // Debug.Log("EnemyHealth detected trigger with " + other.gameObject.name);
+            if (other.gameObject.CompareTag("Bullet"))
+            {
+                BulletDamage bulletDamage = other.gameObject.GetComponent<BulletDamage>();
+                TakeDamage(bulletDamage.damageAmount);
+            }
+        }
+
     }
+
 }
