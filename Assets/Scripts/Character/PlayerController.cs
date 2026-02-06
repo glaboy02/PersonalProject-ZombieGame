@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 namespace RPG.Character
@@ -14,6 +15,7 @@ namespace RPG.Character
         private float verticalInput;
         private Animator playerAnim;
         private SpriteRenderer playerSprite;
+        private float upperBound = 6f;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +43,11 @@ namespace RPG.Character
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 FiringBullets();
+            }
+
+            if (transform.position.y > upperBound)
+            {
+                transform.position = new Vector3(transform.position.x, upperBound, transform.position.z);
             }
 
             
@@ -73,7 +80,8 @@ namespace RPG.Character
 
         public void FiringBullets()
         {
-            Instantiate(bullets[0], transform.position, Quaternion.identity);
+            Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);  
+            Instantiate(bullets[0], spawnPosition, Quaternion.identity);
         }
     }
 }

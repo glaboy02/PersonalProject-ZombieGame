@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4332744260540826560}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a240d744d50114ea4ce24cb8316502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  maxHealth: 100
+  damageAmount: 20
+  bullets: []
 --- !u!114 &1977505479233788526
 MonoBehaviour:
   m_ObjectHideFlags: 0
