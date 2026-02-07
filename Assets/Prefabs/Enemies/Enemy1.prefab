@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 279218105248408848}
   - component: {fileID: 955500235281482371}
   - component: {fileID: -5948313074969057965}
-  - component: {fileID: 6102060618548192035}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -149,7 +148,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -195,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755f9515754026e4f97505423ff36ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RPG.Enemy.EnemyHealth
-  health: 100
-  damageAmount: 20
+  enemyHealth: 100
+  enemyDamage: 20
 --- !u!114 &-5948313074969057965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,15 +208,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639e31a48d18c9d4d83f01554eb79d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveDown
---- !u!114 &6102060618548192035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590384463056593634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d4955b6b3c4d849944146bb0fe077f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions

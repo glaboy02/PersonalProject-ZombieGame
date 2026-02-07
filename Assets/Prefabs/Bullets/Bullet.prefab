@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -8988188020270466549}
   - component: {fileID: 3990178218551145236}
   - component: {fileID: 8070446238371562667}
-  - component: {fileID: -8442523904474484920}
   - component: {fileID: 5007063041249932957}
   m_Layer: 0
   m_Name: Bullet
@@ -194,18 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ef6eabeec7ae7479a2076f5b911cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyObjects
---- !u!114 &-8442523904474484920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110123933083860751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d4955b6b3c4d849944146bb0fe077f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
 --- !u!114 &5007063041249932957
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ namespace RPG.Character
         private Animator playerAnim;
         private SpriteRenderer playerSprite;
         private float upperBound = 6f;
-
         private float timeDelay;
         private float timeBetweenShots = 0.2f;
 
