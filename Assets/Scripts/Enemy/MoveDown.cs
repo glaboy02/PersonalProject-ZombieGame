@@ -22,6 +22,9 @@ public class MoveDown : MonoBehaviour
     
     public void MoveEnemyDown()
     {
+        if (enemyGoal == null)
+            return;
+
         Vector3 direction = (enemyGoal.transform.position - transform.position).normalized;
 
         if (direction.x < 0)

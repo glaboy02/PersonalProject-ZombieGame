@@ -1,8 +1,9 @@
 using UnityEngine;
 
+
 public class ProtectController : MonoBehaviour
 {
-    private int protectHealth = 100;
+    private int protectHealth = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,17 +26,22 @@ public class ProtectController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
+
+        Debug.Log("ProtectHealth detected trigger " + other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy"))
         {
-            // int damage = other.
-            //             gameObject.
-            //             GetComponent<EnemyController>().
-            //             enemyDamage;
-            
-            // TakeDamage(gameObject, damage);
+            int damage = other.
+                        gameObject.
+                        GetComponent<EnemyController>().
+                        enemyDamage;
 
+            TakeDamage(gameObject, damage);
         }
     }
+
 }
+
+
+
