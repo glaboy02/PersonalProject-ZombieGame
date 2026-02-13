@@ -7,10 +7,11 @@ public class EnemyController : MonoBehaviour
     public int enemyDamage = 20;
     private bool isDead = false;
     private float lowerBound = -8f;
+    private GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
-        
+
         enemyHealth -= damage;
 
         if (enemyHealth <= 0)
@@ -42,14 +43,17 @@ public class EnemyController : MonoBehaviour
         // Debug.Log("Enemy is dead");
         Destroy(gameObject);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("EnemyHealth detected trigger with " + other.gameObject.name);
         if (other.gameObject.CompareTag("Bullet"))
         {
+            int playerDamage = player.GetComponent<PlayerController>().playerDamage;
             BulletDamage bulletDamage = other.gameObject.GetComponent<BulletDamage>();
-            TakeDamage(bulletDamage.damageAmount);
+            
+            int totalDamage = bulletDamage.damageAmount + playerDamage;
+            TakeDamage(totalDamage);
         }
     }
 
