@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer playerSprite;
     private float upperBound = 6f;
     private float timeDelay;
-    private float timeBetweenShots = 0.2f;
+    public float timeBetweenShots = 0.2f;
     public int playerDamage = 20;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+
+        if (GameManager.GameplayPaused)
+        {
+            return;
+        }
 
         if (horizontalInput != 0 || verticalInput != 0)
         {

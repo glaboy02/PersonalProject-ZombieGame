@@ -5,12 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
+    public GameObject abilityUI;
     private float enemyCount = 0;
     private int waveNumber = 1;
-    
+    private bool hasSpawnedCards = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         SpawnEnemyWaves();
     }
 
@@ -18,9 +21,13 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if (enemyCount == 0)
+        if (enemyCount == 0 && !hasSpawnedCards)
         {
-            SpawnEnemyWaves();
+
+            abilityUI.SetActive(true);
+            GameManager.SetGameplayPaused(true);
+            AbilityController.Instance.SpawnAbilityCards();
+            hasSpawnedCards = true;
         }
     }
 
@@ -30,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
         int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
         Instantiate(enemyPrefabs[randomEnemyIndex], spawnPosition, transform.rotation);
     }
-    
+
     public void SpawnEnemyWaves()
     {
         for (int i = 0; i < waveNumber; i++)
@@ -38,6 +45,22 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
         }
         waveNumber++;
+        hasSpawnedCards = false;
+    }
+
+    public void OnWaveEnded()
+    {
+        // Logic for when a wave ends
+        Debug.Log("Wave Ended");
+        abilityUI.SetActive(true);
+    }
+
+    public void StartNextWave()
+    {
+        // Logic for starting the next wave
+        Debug.Log("Starting Next Wave");
+        GameManager.SetGameplayPaused(false);
+        SpawnEnemyWaves();
     }
 }
 
