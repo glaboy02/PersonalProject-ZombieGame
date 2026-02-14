@@ -50,15 +50,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void OnWaveEnded()
     {
-        // Logic for when a wave ends
-        Debug.Log("Wave Ended");
         abilityUI.SetActive(true);
     }
 
     public void StartNextWave()
     {
-        // Logic for starting the next wave
-        Debug.Log("Starting Next Wave");
         GameManager.SetGameplayPaused(false);
         SpawnEnemyWaves();
     }
