@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float timeDelay;
     public float timeBetweenShots = 0.2f;
     public int playerDamage = 20;
+    private int weaponCounts = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,8 +84,15 @@ public class PlayerController : MonoBehaviour
 
     public void FiringBullets()
     {
-        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);  
-        Instantiate(bullets[0], spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Instantiate(bullets[Random.Range(0, weaponCounts)], spawnPosition, Quaternion.identity);
+    }
+
+    public void GetWeaponCount(int weaponCount)
+    {
+        int maxWeapons = Random.Range(0, weaponCount);
+        weaponCounts = maxWeapons;
+        Debug.Log(weaponCounts);
     }
 }
 

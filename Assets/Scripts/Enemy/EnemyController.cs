@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 
 public class EnemyController : MonoBehaviour
@@ -8,10 +9,15 @@ public class EnemyController : MonoBehaviour
     private bool isDead = false;
     private float lowerBound = -8f;
     private GameObject player;
+    private Animator animator;
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,6 +36,9 @@ public class EnemyController : MonoBehaviour
         if (isDead) return;
 
         enemyHealth -= damage;
+        animator.SetTrigger("Hit");
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 3f);
+
 
         if (enemyHealth <= 0)
         {
@@ -40,7 +49,15 @@ public class EnemyController : MonoBehaviour
     public void EnemyDead()
     {
         isDead = true;
-        // Debug.Log("Enemy is dead");
+        animator.SetTrigger("Dead");
+        gameObject.GetComponent<MoveDown>().isDead = true;
+        AudioSource.PlayClipAtPoint(deathSound, transform.position, 0.5f);
+        StartCoroutine(DestroyAfterDelay(1f));
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         Destroy(gameObject);
     }
 
@@ -51,9 +68,10 @@ public class EnemyController : MonoBehaviour
         {
             int playerDamage = player.GetComponent<PlayerController>().playerDamage;
             BulletDamage bulletDamage = other.gameObject.GetComponent<BulletDamage>();
-            
+
             int totalDamage = bulletDamage.damageAmount + playerDamage;
             TakeDamage(totalDamage);
+            Destroy(other.gameObject);
         }
     }
 

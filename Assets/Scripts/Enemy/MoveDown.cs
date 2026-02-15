@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using System;
 
 public class MoveDown : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class MoveDown : MonoBehaviour
 
     private GameObject enemyGoal;
     private SpriteRenderer enemySprite;
+    [NonSerialized] public bool isDead = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,8 +24,9 @@ public class MoveDown : MonoBehaviour
     
     public void MoveEnemyDown()
     {
-        if (enemyGoal == null)
-            return;
+        if (enemyGoal == null) return;
+        
+        if (isDead) return;
 
         Vector3 direction = (enemyGoal.transform.position - transform.position).normalized;
 

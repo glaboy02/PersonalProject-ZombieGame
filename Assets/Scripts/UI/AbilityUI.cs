@@ -9,6 +9,7 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
     private EnemySpawner enemySpawner;
     private GameObject abilityUI;
     public TextMeshProUGUI playerDamageText;
+    private int weaponCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,14 +31,14 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
         // Debug.Log(gameObject);
         Transform infoText = transform.GetChild(1);
         string ability = infoText.GetComponent<TextMeshProUGUI>().text;
-        Debug.Log(ability);
+        // Debug.Log(ability);
         ApplyAbilityEffect(ability);
         RoundEndAbilityUI();
     }
     public void RoundEndAbilityUI()
     {
         // Logic for displaying ability UI at the end of a round
-        Debug.Log("Displaying Ability UI at Round End");
+        // Debug.Log("Displaying Ability UI at Round End");
         abilityUI.SetActive(false);
         enemySpawner.StartNextWave();
 
@@ -48,22 +49,35 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
         OnAbilityCardSelected();
     }
 
-    public void ApplyAbilityEffect(string ability)
+    public bool ApplyAbilityEffect(string ability)
     {
         // Logic to apply the effect of the selected ability to the player
-        Debug.Log("Applying Ability Effect to Player");
 
-        if (ability == "Add Weapon")
+
+        if (ability == "Add Weapon" && weaponCount < player.bullets.Length)
         {
             Debug.Log("Player gains a new weapon!");
+            player.GetWeaponCount(weaponCount);
+            Debug.Log("Weapon Count: " + weaponCount);
+            weaponCount++;
+            return true;
         }
         if (ability == "Damage +5%")
         {
             player.playerDamage = Mathf.CeilToInt(player.playerDamage * 1.05f);
+            return true;
         }
         if (ability == "Fire Rate +5%")
         {
             player.timeBetweenShots -= player.timeBetweenShots * 0.05f;
+            return true;
         }
+
+        Debug.Log("Pick a new card!! No New Weapons Available");
+
+
+        return false;
     }
+
+
 }
