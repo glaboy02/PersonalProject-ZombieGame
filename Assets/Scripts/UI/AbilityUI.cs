@@ -22,7 +22,7 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-
+        playerDamageText.text = "Damage: " + player.playerDamage.ToString() + "\n" + "Weapons: " + weaponCount.ToString();
     }
 
     public void OnAbilityCardSelected()

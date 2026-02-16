@@ -14,11 +14,30 @@ public class MenuUIHandler : MonoBehaviour
 
     public void QuitGame()
     {
-# if UNITY_EDITOR
+        SaveManager.Instance.SaveLongestRun();
+#if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
-# else
+#else
+
         Application.Quit();
 # endif
     }
-    
+
+    public void BackToMenu()
+    {
+        if (SaveManager.Instance.currentRun > SaveManager.Instance.longestRun)
+        {
+            SaveManager.Instance.longestRun = SaveManager.Instance.currentRun;
+        }
+        // SaveManager.Instance.longestRun = SaveManager.Instance.currentRun;
+        SaveManager.Instance.SaveLongestRun();
+        SceneManager.LoadScene(0);
+    }
+
+    public void ResetLongestRun()
+    {
+        SaveManager.Instance.longestRun = 0;
+        SaveManager.Instance.SaveLongestRun();
+    }
+
 }
