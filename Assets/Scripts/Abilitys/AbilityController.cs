@@ -9,9 +9,6 @@ public class AbilityController : MonoBehaviour
     [SerializeField] private GameObject[] abilityCard2;
     [SerializeField] private GameObject[] abilityCard3;
 
-    // [Header("Spawn Points")]
-    // [SerializeField] private Transform[] cardSpawnPoints;
-
     void Awake()
     {
         if (Instance == null)
@@ -41,7 +38,6 @@ public class AbilityController : MonoBehaviour
 
     public void SpawnAbilityCards()
     {
-        
 
         // First, deactivate ALL cards in all arrays
         if (abilityCard1 != null)
@@ -71,20 +67,41 @@ public class AbilityController : MonoBehaviour
         // Then activate ONE random card from each array
         for (int i = 0; i < abilityCard1.Length; i++)
         {
-            if (i == 0 && abilityCard1 != null && abilityCard1.Length > 0)
+            if (AbilityUI.weaponCount >= 3)
             {
-                int randomIndex = GetRandomAbilityCardIndex(abilityCard1.Length);
-                abilityCard1[randomIndex].SetActive(true);
+                if (i == 0 && abilityCard1 != null && abilityCard1.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard1.Length - 1);
+                    abilityCard1[randomIndex].SetActive(true);
+                }
+                else if (i == 1 && abilityCard2 != null && abilityCard2.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard2.Length - 1);
+                    abilityCard2[randomIndex].SetActive(true);
+                }
+                else if (i == 2 && abilityCard3 != null && abilityCard3.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard3.Length - 1);
+                    abilityCard3[randomIndex].SetActive(true);
+                }
             }
-            else if (i == 1 && abilityCard2 != null && abilityCard2.Length > 0)
+            else
             {
-                int randomIndex = GetRandomAbilityCardIndex(abilityCard2.Length);
-                abilityCard2[randomIndex].SetActive(true);
-            }
-            else if (i == 2 && abilityCard3 != null && abilityCard3.Length > 0)
-            {
-                int randomIndex = GetRandomAbilityCardIndex(abilityCard3.Length);
-                abilityCard3[randomIndex].SetActive(true);
+                if (i == 0 && abilityCard1 != null && abilityCard1.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard1.Length);
+                    abilityCard1[randomIndex].SetActive(true);
+                }
+                else if (i == 1 && abilityCard2 != null && abilityCard2.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard2.Length);
+                    abilityCard2[randomIndex].SetActive(true);
+                }
+                else if (i == 2 && abilityCard3 != null && abilityCard3.Length > 0)
+                {
+                    int randomIndex = GetRandomAbilityCardIndex(abilityCard3.Length);
+                    abilityCard3[randomIndex].SetActive(true);
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
     private EnemySpawner enemySpawner;
     private GameObject abilityUI;
     public TextMeshProUGUI playerDamageText;
-    private int weaponCount = 0;
+    public static int weaponCount = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,12 +54,11 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
         // Logic to apply the effect of the selected ability to the player
 
 
-        if (ability == "Add Weapon" && weaponCount < player.bullets.Length)
+        if (ability == "Add Weapon")
         {
-            Debug.Log("Player gains a new weapon!");
-            player.GetWeaponCount(weaponCount);
-            Debug.Log("Weapon Count: " + weaponCount);
             weaponCount++;
+            player.GetWeaponCount(weaponCount);
+
             return true;
         }
         if (ability == "Damage +5%")
@@ -72,9 +71,6 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
             player.timeBetweenShots -= player.timeBetweenShots * 0.05f;
             return true;
         }
-
-        Debug.Log("Pick a new card!! No New Weapons Available");
-
 
         return false;
     }

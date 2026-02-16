@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
         enemyHealth -= damage;
         animator.SetTrigger("Hit");
-        AudioSource.PlayClipAtPoint(hitSound, transform.position, 3f);
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1f);
 
 
         if (enemyHealth <= 0)
@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Dead");
         gameObject.GetComponent<MoveDown>().isDead = true;
-        AudioSource.PlayClipAtPoint(deathSound, transform.position, 0.5f);
+        AudioSource.PlayClipAtPoint(deathSound, transform.position, 1f);
         StartCoroutine(DestroyAfterDelay(1f));
     }
 
