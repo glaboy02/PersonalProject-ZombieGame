@@ -90,9 +90,7 @@ public class PlayerController : MonoBehaviour
 
     public void GetWeaponCount(int weaponCount)
     {
-
         weaponCounts = weaponCount;
-        Debug.Log(weaponCounts);
     }
 }
 
