@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI longestRunText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI roundText;
     public GameObject gameOverScreen;
     float elapsedTime = 0f;
     float longestRunTime = 0f;
@@ -75,6 +76,11 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         SetGameplayPaused(true);
         gameOverScreen.SetActive(true);
+    }
+
+    public void RoundCounter(int round)
+    {
+        roundText.text = "Round: " + round;
     }
 
 }

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755f9515754026e4f97505423ff36ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RPG.Enemy.EnemyHealth
-  enemyHealth: 100
+  enemyHealth: 200
   enemyDamage: 20
   hitSound: {fileID: 8300000, guid: 6b7eaf4532a2f614595ad58d2b86efc4, type: 3}
   deathSound: {fileID: 8300000, guid: 291608b8d286e2a4580ff36324455ce2, type: 3}
