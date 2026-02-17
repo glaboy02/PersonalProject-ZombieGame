@@ -6,14 +6,22 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
+    public AudioClip clickSound;
+    private AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void StartGame()
     {
+        PlayClickSound();
         SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
     {
+        PlayClickSound();
         SaveManager.Instance.SaveLongestRun();
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
@@ -25,6 +33,7 @@ public class MenuUIHandler : MonoBehaviour
 
     public void BackToMenu()
     {
+        PlayClickSound();
         if (SaveManager.Instance.currentRun > SaveManager.Instance.longestRun)
         {
             SaveManager.Instance.longestRun = SaveManager.Instance.currentRun;
@@ -38,8 +47,17 @@ public class MenuUIHandler : MonoBehaviour
 
     public void ResetLongestRun()
     {
+        PlayClickSound();
         SaveManager.Instance.longestRun = 0;
         SaveManager.Instance.SaveLongestRun();
+    }
+
+    private void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 
 }
