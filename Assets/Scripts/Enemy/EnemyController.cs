@@ -50,6 +50,8 @@ public class EnemyController : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("Dead");
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
         gameObject.GetComponent<MoveDown>().isDead = true;
         AudioSource.PlayClipAtPoint(deathSound, transform.position, 1f);
         StartCoroutine(DestroyAfterDelay(1f));
