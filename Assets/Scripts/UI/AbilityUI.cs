@@ -50,14 +50,14 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
 
             return true;
         }
-        if (ability == "Damage +5%")
+        if (ability == "Damage +10%")
         {
-            player.playerDamage = Mathf.CeilToInt(player.playerDamage * 1.05f);
+            player.playerDamage = Mathf.CeilToInt(player.playerDamage * 1.1f);
             return true;
         }
-        if (ability == "Fire Rate +5%")
+        if (ability == "Fire Rate +10%")
         {
-            player.timeBetweenShots -= player.timeBetweenShots * 0.05f;
+            player.timeBetweenShots -= player.timeBetweenShots * 0.1f;
             return true;
         }
 
