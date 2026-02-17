@@ -5,18 +5,16 @@ using System;
 public class MoveDown : MonoBehaviour
 {
     private float speed = 1f;
-
     private GameObject enemyGoal;
     private SpriteRenderer enemySprite;
     [NonSerialized] public bool isDead = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         enemyGoal = GameObject.Find("Girl");
         enemySprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveEnemyDown();

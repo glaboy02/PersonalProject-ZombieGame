@@ -10,14 +10,11 @@ public class EnemySpawner : MonoBehaviour
     private int waveNumber = 1;
     private bool hasSpawnedCards = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         SpawnEnemyWaves();
     }
 
-    // Update is called once per frame
     void Update()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;

@@ -11,7 +11,6 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI playerDamageText;
     public static int weaponCount = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -19,7 +18,6 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
         enemySpawner = GameObject.Find("SpawnEnemy").GetComponent<EnemySpawner>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerDamageText.text = "Damage: " + player.playerDamage.ToString() + "\n" + "Weapons: " + weaponCount.ToString();
@@ -27,21 +25,15 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
 
     public void OnAbilityCardSelected()
     {
-        // Logic for when an ability card is selected
-        // Debug.Log(gameObject);
         Transform infoText = transform.GetChild(1);
         string ability = infoText.GetComponent<TextMeshProUGUI>().text;
-        // Debug.Log(ability);
         ApplyAbilityEffect(ability);
         RoundEndAbilityUI();
     }
     public void RoundEndAbilityUI()
     {
-        // Logic for displaying ability UI at the end of a round
-        // Debug.Log("Displaying Ability UI at Round End");
         abilityUI.SetActive(false);
         enemySpawner.StartNextWave();
-
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -51,9 +43,6 @@ public class AbilityUI : MonoBehaviour, IPointerClickHandler
 
     public bool ApplyAbilityEffect(string ability)
     {
-        // Logic to apply the effect of the selected ability to the player
-
-
         if (ability == "Add Weapon")
         {
             weaponCount++;

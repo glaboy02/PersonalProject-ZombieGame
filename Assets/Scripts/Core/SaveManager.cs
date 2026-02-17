@@ -7,17 +7,6 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { get; private set; }
     public int longestRun;
     public int currentRun;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void Awake()
     {

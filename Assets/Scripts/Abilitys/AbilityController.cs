@@ -21,16 +21,6 @@ public class AbilityController : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
     private int GetRandomAbilityCardIndex(int arrayLength)
     {
         return Random.Range(0, arrayLength);

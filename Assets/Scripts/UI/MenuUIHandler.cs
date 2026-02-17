@@ -29,8 +29,10 @@ public class MenuUIHandler : MonoBehaviour
         {
             SaveManager.Instance.longestRun = SaveManager.Instance.currentRun;
         }
-        // SaveManager.Instance.longestRun = SaveManager.Instance.currentRun;
         SaveManager.Instance.SaveLongestRun();
+        GameManager.SetGameplayPaused(false);
+        GameManager.Instance.gameOver = false;
+        GameManager.Instance.gameOverScreen.SetActive(false);
         SceneManager.LoadScene(0);
     }
 

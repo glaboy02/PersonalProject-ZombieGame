@@ -18,14 +18,12 @@ public class PlayerController : MonoBehaviour
     public int playerDamage = 20;
     private int weaponCounts = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerAnim = GetComponent<Animator>();
         playerSprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         verticalInput = Input.GetAxis("Vertical");

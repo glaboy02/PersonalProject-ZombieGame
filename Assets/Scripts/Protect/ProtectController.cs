@@ -4,18 +4,7 @@ using UnityEngine;
 public class ProtectController : MonoBehaviour
 {
     private int protectHealth = 1;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public AudioClip hitSound;
 
     private void TakeDamage(GameObject gameObject, int damage)
     {
@@ -23,13 +12,14 @@ public class ProtectController : MonoBehaviour
         if (protectHealth <= 0)
         {
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+            GameManager.Instance.GameOver();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        Debug.Log("ProtectHealth detected trigger " + other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy"))
         {
             int damage = other.
