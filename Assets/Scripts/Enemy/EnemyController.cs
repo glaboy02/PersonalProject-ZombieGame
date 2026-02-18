@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
-        StartCoroutine(DestroyAfterDelay(2f));
     }
 
     // Update is called once per frame

@@ -15145,7 +15145,7 @@ Transform:
   m_GameObject: {fileID: 926223287}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.5, y: 10.35, z: 0}
+  m_LocalPosition: {x: -11.5, y: 16.37, z: 0}
   m_LocalScale: {x: 22, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24385,8 +24385,6 @@ MonoBehaviour:
   - {fileID: 5193554834594743138, guid: d35f5b2a585e9164984551ae3edfd0e9, type: 3}
   - {fileID: 4631737743269079841, guid: 45387b594bf3e494382a7b98deb53f9a, type: 3}
   abilityUI: {fileID: 1985765184}
-  increaseDifficulty: 1
-  removeEnemy: 1
 --- !u!1001 &1550223151
 PrefabInstance:
   m_ObjectHideFlags: 0

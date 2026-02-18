@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(int enemyIndex, int removeCount)
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-10, 10), 8, 0);
+        Vector3 spawnPosition = new Vector3(Random.Range(-10, 10), 9, 0);
 
         int startIndex = removeCount;
         int endIndex = enemyIndex;
